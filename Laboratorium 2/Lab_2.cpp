@@ -38,6 +38,20 @@ void my_swap(int *no1, int *no2)
     *no2 = temp;
 }
 
+void swap_overload(int &no1, int &no2)
+{
+    int temp = no1;
+    no1 = no2;
+    no2 = temp;
+}
+
+void swap_overload(double &no1, double &no2)
+{
+    double temp = no1;
+    no1 = no2;
+    no2 = temp;
+}
+
 int main()
 {
     /*Zad 1*/
@@ -67,7 +81,8 @@ int main()
     cout << "5) " << "a = " << a << ", " << "b = " << b << "\t\t<-- Zamiana (poprzez wskazniki)" << endl;
 
     /*Zad 6*/
-
+    swap_overload(a,b);
+    cout << "6) " << "a = " << a << ", " << "b = " << b << "\t\t<-- Zamiana - przeciazenie funkcji" << endl;
 
     return 0;
 }
