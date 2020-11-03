@@ -1,4 +1,5 @@
 #include <iostream>
+#include <algorithm>
 using namespace std;
 
 void swap_if_smaller(int *no1, int *no2)
@@ -38,6 +39,15 @@ void my_swap(int *no1, int *no2)
     *no2 = temp;
 }
 
+template <class T>
+    void swapT(T &no1, T &no2)
+    {
+        T temp;
+        temp = no1;
+        no1 = no2;
+        no2 = temp;
+    }
+
 void swap_overload(int &no1, int &no2)
 {
     int temp = no1;
@@ -61,28 +71,30 @@ int main()
     cout << "b = ";
     cin >> b;
     swap_if_smaller(&a, &b);
-    cout << "1) " << "a = " << a << ", " << "b = " << b << "\t\t<-- Zamiana (poprzez wskazniki) jesli b jest mniejsze od a" << endl;
+    cout << "1) a = " << a << ", b = " << b << "\t\t<-- Zamiana (poprzez wskazniki) jesli b jest mniejsze od a" << endl;
 
     /*Zad 2*/
     swap_numbers(a, b);
-    cout << "2) " << "a = " << a << ", " << "b = " << b << "\t\t<-- Zamiana (poprzez referencje)" << endl;
+    cout << "2) a = " << a << ", b = " << b << "\t\t<-- Zamiana (poprzez referencje)" << endl;
 
     /*Zad 3*/
     swap_no(a, &b);
-    cout << "3) " << "a = " << a << ", " << "b = " << b << "\t\t<-- Zamiana (poprzez wskaznik i referencje)" << endl;
+    cout << "3) a = " << a << ", b = " << b << "\t\t<-- Zamiana (poprzez wskaznik i referencje)" << endl;
 
     /*Zad 4*/
     int product = 0;
     int sum = product_sum(a, b, &product);
-    cout << "4) " << "a * b = " << product << "\t\t<-- Iloczyn" << endl << "   a + b = " << sum << "\t\t<-- Suma" << endl;
+    cout << "4) a * b = " << product << "\t\t<-- Iloczyn" << endl << "   a + b = " << sum << "\t\t<-- Suma" << endl;
 
     /*Zad 5*/
     my_swap(&a, &b);
-    cout << "5) " << "a = " << a << ", " << "b = " << b << "\t\t<-- Zamiana (poprzez wskazniki)" << endl;
+    cout << "5) a = " << a << ", b = " << b << "\t\t<-- Zamiana (poprzez wskazniki)" << endl;
 
     /*Zad 6*/
-    swap_overload(a,b);
-    cout << "6) " << "a = " << a << ", " << "b = " << b << "\t\t<-- Zamiana - przeciazenie funkcji" << endl;
+    swapT<int>(a, b);
+    cout << "6.1) a = " << a << ", b = " << b << "\t<-- Zamiana (szablon)" << endl;
+    swap_overload(a, b);
+    cout << "6.2) a = " << a << ", b = " << b << "\t<-- Zamiana - przeciazenie funkcji" << endl;
 
     return 0;
 }
