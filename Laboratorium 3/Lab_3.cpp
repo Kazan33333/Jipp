@@ -14,7 +14,8 @@ public:
     Matrix multiply(Matrix m2);
     int cols();
     int rows();
-    //void print();
+    void print();
+    void store(string filename, string path);
 };
 
 Matrix::Matrix(int rows, int cols)
@@ -41,12 +42,12 @@ Matrix::Matrix(int size)
 
 void set(int n, int m, int val)
 {
-    
+    matrix.at(n).at(m) = val;
 }
 
 double get(int n, int m)
 {
-
+    return matrix.at(n).at(m);
 }
 
 Matrix Matrix::add(Matrix m2)
@@ -90,6 +91,10 @@ int Matrix::rows()
 
 int main()
 {
+    matrix matrix1 = matrix(6,4);
+    matrix matrix2 = matrix(4,6);
+    matrix squarematrix1 = matrix(5);
+    matrix squarematrix2 = matrix(5);
 
     return 0;
 }
