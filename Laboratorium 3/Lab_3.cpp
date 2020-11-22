@@ -5,18 +5,19 @@ using namespace std;
 class Matrix {
 public:
     vector < vector < double > > matrix;
-    Matrix(int rows, int cols);
-    Matrix(int size);
-    void set(int n, int m, int val);
-    double get(int n, int m);
-    Matrix add(Matrix m2);
-    Matrix subtract(Matrix m2);
-    Matrix multiply(Matrix m2);
-    int cols();
-    int rows();
-    void print();
-    void store(string filename, string path);
-};
+    Matrix(int rows, int cols); /*konstruktor przyjmujący dwa argumenty typu int tworzący macierz o podanych wymiarach zainicjalizowaną zerami*/
+    Matrix(int size); /*konstruktor przyjmujący jeden argument typu int tworzący macierz kwadratową o podanym rozmiarze zainicjalizowaną zerami*/
+    Matrix(string path); /*dodatkowy konstruktor jako argument przyjmujący ścieżkę do pliku o podanym wcześniej formacie i na jego podstawie tworzący nową macierz na podstawie przekazanego pliku*/
+    void set(int n, int m, int val); /*metoda ustawiająca wartość elementu (n, m) na val*/
+    double get(int n, int m); /*metoda pobierająca element (n, m)*/
+    Matrix add(Matrix m2); /*metoda przyjmująca jako argument inną macierz i zwracająca jako wynik nową macierz będącą sumą bieżącej macierzy oraz macierzy przekazanej jako argument*/
+    Matrix subtract(Matrix m2); /*metoda przyjmująca jako argument inną macierz i zwracająca jako wynik nową macierz będącą różnicą bieżącej macierzy oraz macierzy przekazanej jako argument*/
+    Matrix multiply(Matrix m2); /*metoda przyjmująca jako argument inną macierz i zwracająca jako wynik nową macierz będącą iloczynem bieżącej macierzy oraz macierzy przekazanej jako argument*/
+    int cols(); /*metoda zwracająca liczbę kolumn macierzy*/
+    int rows(); /*metoda zwracająca liczbę wierszy macierzy*/
+    void print(); /*metoda wyświetlająca macierz na ekranie*/
+    void store(string filename, string path); /*metoda zapisująca macierz w pliku; w pliku powinny być zapisane wymiary macierzy (liczba kolumn i liczba wierszy w pierwszym wierszu pliku)*/
+};                                            /*oraz jej zawartość (każdy wiersz macierzy w osobnym wierszu pliku)*/
 
 Matrix::Matrix(int rows, int cols)
 {
@@ -38,6 +39,11 @@ Matrix::Matrix(int size)
     for (int i = 0 ; i < size ; i++) {
         matrix.push_back(tab);
     }
+}
+
+Matrix::Matrix(string path)
+{
+
 }
 
 void set(int n, int m, int val)
@@ -76,7 +82,9 @@ Matrix Matrix::subtract(Matrix m2)
 
 Matrix Matrix::multiply(Matrix m2)
 {
-
+    int r = rows();
+    int c = cols();
+    
 }
 
 int Matrix::cols()
