@@ -65,7 +65,7 @@ Matrix::Matrix(std::string path)
     file.close();
 }
 
-Matrix::~Matrix(){}
+Matrix::~Matrix(){};
 
 void Matrix::set(int n, int m, double val)
 {
@@ -115,7 +115,7 @@ Matrix Matrix::multiply(Matrix &m2)
         for (int j = 0; j < m2c; j++) {
             sum = 0;
             for (int k = 0; k < c; k++) {
-                sum += matrix[i][k] * (m2.matrix)[j][k];
+                sum += matrix[i][k] * (m2.matrix)[k][j];
             }
             (result.matrix)[i][j] = sum;
         }
@@ -136,12 +136,13 @@ int Matrix::rows()
 bool Matrix::store(std::string filename, std::string path)
 {
     std::fstream file;
+    file.open((path + filename).c_str());
     if (!file.good()) {
         return false;
     }
     int r = rows();
     int c = cols();
-    file << "Wiersze: " << r << ", " << "Kolumny: " << c;
+    file << r << " " << c;
     file << std::endl;
     for (int i = 0; i < r; i++) {
         for (int j = 0; j < c; j++) {
@@ -159,7 +160,7 @@ void Matrix::print()
     int c = cols();
     for(int i = 0; i < r; i++){
         for(int j = 0; j < c; j++){
-            std::cout << std::setw(5) << matrix[i][j];
+            std::cout << std::setw(6) << matrix[i][j];
         }
         std::cout << std::endl;
     }
@@ -175,21 +176,21 @@ int main()
     double tab;
     for(int i = 0; i < 6; i++){
         for(int j = 0; j < 4; j++){
-            tab = (double)(rand() % 100);
+            tab = (double)(rand() % 30);
             matrix1.set(i,j,tab);
         }
     }
     for(int i = 0; i < 4; i++){
         for(int j = 0; j < 6; j++){
-            tab = (double)(rand() % 100);
+            tab = (double)(rand() % 30);
             matrix2.set(i,j,tab);
         }
     }
     for(int i = 0; i < 5; i++){
         for(int j = 0; j < 5; j++){
-            tab = (double)(rand() % 100);
+            tab = (double)(rand() % 30);
             squarematrix1.set(i,j,tab);
-            tab = (double)(rand() % 100);
+            tab = (double)(rand() % 30);
             squarematrix2.set(i,j,tab);
         }
     }
@@ -202,18 +203,18 @@ int main()
     squarematrix1.print();
     std::cout << std::endl << "4) Macierz kw. 2 o wymiarach 5x5" << std::endl << std::endl;
     squarematrix2.print();
-    std::cout << std::endl << "5) Dodawanie:" << std::endl << std::endl;
+    std::cout << std::endl << "5) Dodawanie (macierz 1 i macierz 2):" << std::endl << std::endl;
     Matrix result1 = squarematrix1.add(squarematrix2);
     result1.print();
-    std::cout << std::endl << "6) Odejmowanie:" << std::endl << std::endl;
+    std::cout << std::endl << "6) Odejmowanie (macierz 1 i macierz 2):" << std::endl << std::endl;
     Matrix result2 = squarematrix1.subtract(squarematrix2);
     result2.print();
-    std::cout << std::endl << "7) Mnozenie:" << std::endl << std::endl;
+    std::cout << std::endl << "7) Mnozenie (macierz kw. 1 i macierz kw. 2):" << std::endl << std::endl;
     Matrix result3 = matrix1.multiply(matrix2);
     result3.print();
     std::cout << std::endl << "8) Zapis do pliku:" <<std::endl;
     if(result3.store("File_store", "./Txt/")) {
-        std::cout << "The file has been saved" << std::endl;
+        std::cout << "Plik zapisany" << std::endl;
     }
     std::cout << "9) Zapis konstruktora do pliku:" <<std::endl;
     Matrix result4 = Matrix("./Txt/File");
