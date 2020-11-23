@@ -64,7 +64,7 @@ Matrix Matrix::add(Matrix m2)
 {
     int r = rows();
     int c = cols();
-    Matrix result = matrix;
+    Matrix result = Matrix(r, c);
     for (int i = 0; i < r; i++) {
         for (int j = 0; j < c; j++) {
             (Matrix.matrix)[i][j] = matrix[i][j] + (m2.matrix)
@@ -76,7 +76,7 @@ Matrix Matrix::subtract(Matrix m2)
 {
     int r = rows();
     int c = cols();
-    Matrix result = matrix;
+    Matrix result = Matrix(r, c);
     for (int i = 0; i < r; i++) {
         for (int j = 0; j < c; j++) {
             (Matrix.matrix)[i][j] = matrix[i][j] - (m2.matrix)
@@ -88,7 +88,7 @@ Matrix Matrix::multiply(Matrix m2)
 {
     int r = rows();
     int c = cols();
-    Matrix result
+    Matrix result = Matrix(r, c);
 }
 
 int Matrix::cols()
