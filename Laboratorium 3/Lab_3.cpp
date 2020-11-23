@@ -135,7 +135,7 @@ int Matrix::rows()
 
 bool Matrix::store(std::string filename, std::string path)
 {
-    std::fstream file;
+    std::ofstream file;
     file.open((path + filename).c_str());
     if (!file.good()) {
         return false;
@@ -197,6 +197,7 @@ int main()
 
     std::cout << "1) Macierz 1 o wymiarach 6x4" << std::endl << std::endl;
     matrix1.print();
+    matrix1.set(1, 2, 8);
     std::cout << std::endl << "2) Macierz 2 o wymiarach 4x6" << std::endl << std::endl;
     matrix2.print();
     std::cout << std::endl << "3) Macierz kw. 1 o wymiarach 5x5" << std::endl << std::endl;
@@ -212,13 +213,13 @@ int main()
     std::cout << std::endl << "7) Mnozenie (macierz kw. 1 i macierz kw. 2):" << std::endl << std::endl;
     Matrix result3 = matrix1.multiply(matrix2);
     result3.print();
-    std::cout << std::endl << "8) Zapis do pliku:" <<std::endl;
+    std::cout << "8) Odczyt konstruktora z pliku:" <<std::endl;
+    Matrix result4 = Matrix("./Txt/File");
+    result4.print();
+    std::cout << std::endl << "9) Zapis do pliku:" <<std::endl;
     if(result3.store("File_store", "./Txt/")) {
         std::cout << "Plik zapisany" << std::endl;
     }
-    std::cout << "9) Zapis konstruktora do pliku:" <<std::endl;
-    Matrix result4 = Matrix("./Txt/File");
-    result4.print();
 
     return 0;
 }
