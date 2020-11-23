@@ -26,10 +26,10 @@ Matrix::Matrix(int rows, int cols)
 {
     std::vector <double> tab;
     for(int j = 0; j < cols; j++) {
-        tab.push_back(0); //wypełniam zerami
+        tab.push_back(0);
     }
     for (int i = 0 ; i < rows ; i++) {
-        matrix.push_back(tab); //wypełniam vector vectorami
+        matrix.push_back(tab);
     }
 }
 
@@ -209,13 +209,13 @@ int main()
     Matrix result2 = squarematrix1.subtract(squarematrix2);
     result2.print();
     std::cout << std::endl << "7) Mnozenie:" << std::endl << std::endl;
-    Matrix result3 = matrix1.multiply(matrix2) << std::endl;
+    Matrix result3 = matrix1.multiply(matrix2);
     result3.print();
     std::cout << std::endl << "8) Zapis do pliku:" <<std::endl;
     if(result3.store("File_store", "./Txt/")) {
         std::cout << "The file has been saved" << std::endl;
     }
-    std::cout << "--- Constructor from file ---" <<std::endl;
+    std::cout << "9) Zapis konstruktora do pliku:" <<std::endl;
     Matrix result4 = Matrix("./Txt/File");
     result4.print();
 
