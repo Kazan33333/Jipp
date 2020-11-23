@@ -1,27 +1,28 @@
 #include <iostream>
 #include <vector>
-using namespace std;
 
 class Matrix {
 public:
-    vector < vector < double > > matrix;
-    Matrix(int rows, int cols); /*konstruktor przyjmujący dwa argumenty typu int tworzący macierz o podanych wymiarach zainicjalizowaną zerami*/
-    Matrix(int size); /*konstruktor przyjmujący jeden argument typu int tworzący macierz kwadratową o podanym rozmiarze zainicjalizowaną zerami*/
-    Matrix(string path); /*dodatkowy konstruktor jako argument przyjmujący ścieżkę do pliku o podanym wcześniej formacie i na jego podstawie tworzący nową macierz na podstawie przekazanego pliku*/
-    void set(int n, int m, int val); /*metoda ustawiająca wartość elementu (n, m) na val*/
-    double get(int n, int m); /*metoda pobierająca element (n, m)*/
-    Matrix add(Matrix m2); /*metoda przyjmująca jako argument inną macierz i zwracająca jako wynik nową macierz będącą sumą bieżącej macierzy oraz macierzy przekazanej jako argument*/
-    Matrix subtract(Matrix m2); /*metoda przyjmująca jako argument inną macierz i zwracająca jako wynik nową macierz będącą różnicą bieżącej macierzy oraz macierzy przekazanej jako argument*/
-    Matrix multiply(Matrix m2); /*metoda przyjmująca jako argument inną macierz i zwracająca jako wynik nową macierz będącą iloczynem bieżącej macierzy oraz macierzy przekazanej jako argument*/
-    int cols(); /*metoda zwracająca liczbę kolumn macierzy*/
-    int rows(); /*metoda zwracająca liczbę wierszy macierzy*/
-    void print(); /*metoda wyświetlająca macierz na ekranie*/
-    void store(string filename, string path); /*metoda zapisująca macierz w pliku; w pliku powinny być zapisane wymiary macierzy (liczba kolumn i liczba wierszy w pierwszym wierszu pliku)*/
-};                                            /*oraz jej zawartość (każdy wiersz macierzy w osobnym wierszu pliku)*/
+    std::vector < std::vector < double > > matrix;
+    Matrix(int rows, int cols);
+    Matrix(int size);
+    Matrix(std::string path);
+    ~Matrix();
+    void set(int n, int m, int val);
+    double get(int n, int m);
+    Matrix add(Matrix m2);
+    Matrix subtract(Matrix m2);
+    Matrix multiply(Matrix m2);
+    int cols();
+    int rows();
+    void print();
+    void store(std::string filename, std::string path);
+    int main();
+};
 
 Matrix::Matrix(int rows, int cols)
 {
-    vector <double> tab;
+    std::vector <double> tab;
     for(int j = 0; j < cols; j++) {
         tab.push_back(0); //wypełniam zerami
     }
@@ -32,7 +33,7 @@ Matrix::Matrix(int rows, int cols)
 
 Matrix::Matrix(int size)
 {
-    vector <double> tab;
+    std::vector <double> tab;
     for (int j = 0; j < size; j++) {
         tab.push_back(0);
     }
@@ -43,15 +44,18 @@ Matrix::Matrix(int size)
 
 Matrix::Matrix(string path)
 {
-
+    std::fstream file;
+    file.open();
 }
 
-void set(int n, int m, int val)
+Matrix::~Matrix(){}
+
+void Matrix::set(int n, int m, int val)
 {
     matrix.at(n).at(m) = val;
 }
 
-double get(int n, int m)
+double Matrix::get(int n, int m)
 {
     return matrix.at(n).at(m);
 }
@@ -84,7 +88,7 @@ Matrix Matrix::multiply(Matrix m2)
 {
     int r = rows();
     int c = cols();
-    
+    Matrix result
 }
 
 int Matrix::cols()
@@ -97,12 +101,12 @@ int Matrix::rows()
     return matrix.size();
 }
 
-int main()
+int Matrix::main()
 {
-    matrix matrix1 = matrix(6,4);
-    matrix matrix2 = matrix(4,6);
-    matrix squarematrix1 = matrix(5);
-    matrix squarematrix2 = matrix(5);
+    Matrix matrix1 = matrix(6,4);
+    Matrix matrix2 = matrix(4,6);
+    Matrix squarematrix1 = matrix(5);
+    Matrix squarematrix2 = matrix(5);
 
     return 0;
 }
