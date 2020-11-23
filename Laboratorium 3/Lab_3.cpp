@@ -8,16 +8,15 @@ public:
     Matrix(int size);
     Matrix(std::string path);
     ~Matrix();
-    void set(int n, int m, int val);
+    void set(int n, int m, double val);
     double get(int n, int m);
-    Matrix add(Matrix m2);
-    Matrix subtract(Matrix m2);
-    Matrix multiply(Matrix m2);
+    Matrix add(Matrix &m2);
+    Matrix subtract(Matrix &m2);
+    Matrix multiply(Matrix &m2);
     int cols();
     int rows();
     void print();
-    void store(std::string filename, std::string path);
-    int main();
+    bool store(std::string filename, std::string path);
 };
 
 Matrix::Matrix(int rows, int cols)
@@ -60,35 +59,50 @@ double Matrix::get(int n, int m)
     return matrix.at(n).at(m);
 }
 
-Matrix Matrix::add(Matrix m2)
+Matrix Matrix::add(Matrix &m2)
 {
     int r = rows();
     int c = cols();
     Matrix result = Matrix(r, c);
     for (int i = 0; i < r; i++) {
         for (int j = 0; j < c; j++) {
-            (Matrix.matrix)[i][j] = matrix[i][j] + (m2.matrix)
+            (Matrix.matrix)[i][j] = matrix[i][j] + (m2.matrix)[i][j];
         }
     }
+    return result;
 }
 
-Matrix Matrix::subtract(Matrix m2)
+Matrix Matrix::subtract(Matrix &m2)
 {
     int r = rows();
     int c = cols();
     Matrix result = Matrix(r, c);
     for (int i = 0; i < r; i++) {
         for (int j = 0; j < c; j++) {
-            (Matrix.matrix)[i][j] = matrix[i][j] - (m2.matrix)
+            (Matrix.matrix)[i][j] = matrix[i][j] - (m2.matrix)[i][j];            
         }
     }
+    return result;
 }
 
-Matrix Matrix::multiply(Matrix m2)
+Matrix Matrix::multiply(Matrix &m2)
 {
     int r = rows();
     int c = cols();
+    int m2r = m2.rows();
+    int m2c = m2.cols();
     Matrix result = Matrix(r, c);
+    double sum = 0;
+    for (int i = 0; i < r; i++) {
+        for (int j = 0; j < m2c; j++) {
+            sum = 0;
+            for (int k = 0; k < c; k++) {
+                sum += matrix[i][k] * (m2matrix)[j][k];
+            }
+            (result.matrix)[i][j] = sum;
+        }
+    }
+    return result;
 }
 
 int Matrix::cols()
@@ -101,7 +115,12 @@ int Matrix::rows()
     return matrix.size();
 }
 
-int Matrix::main()
+bool Matrix::store(std::string filename, std::string path)
+{
+    std::fstream file;
+}
+
+int main()
 {
     Matrix matrix1 = matrix(6,4);
     Matrix matrix2 = matrix(4,6);
