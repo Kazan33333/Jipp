@@ -193,9 +193,9 @@ int main()
         }
     }
 
-    std::cout << "1) Macierz 1 o wymiarach 4x6 (odczyt z pliku):" << std::endl << std::endl;
+    std::cout << "1) Macierz 1 o wymiarach 4x6:" << std::endl << std::endl;
     matrix1.print();
-    std::cout << std::endl << "2) Macierz 2 o wymiarach 6x4:" << std::endl << std::endl;
+    std::cout << std::endl << "2) Macierz 2 o wymiarach 6x4 (odczyt z pliku):" << std::endl << std::endl;
     matrix2 = Matrix("./Txt/File.txt");
     matrix2.print();
     std::cout << std::endl << "3) Macierz kw. 1 o wymiarach 5x5:" << std::endl << std::endl;
@@ -211,9 +211,9 @@ int main()
     std::cout << std::endl << "7) Mnozenie (macierz 1 i macierz 2):" << std::endl << std::endl;
     Matrix result3 = matrix1.multiply(matrix2);
     result3.print();
-    std::cout << std::endl << "8) Zapis do pliku:" << std::endl;
+    std::cout << std::endl << "8) Zapis do pliku: ";
     if(result3.store("File_store.txt", "./Txt/")) {
-        std::cout << "Wyniki mnozenia macierzy kwadratowych zapisane do pliku" << std::endl;
+        std::cout << "Wyniki mnozenia macierzy zapisane do pliku." << std::endl;
     }
 
     return 0;
