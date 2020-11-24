@@ -46,9 +46,9 @@ Matrix::Matrix(int size)
 
 Matrix::Matrix(std::string path)
 {
-    std::fstream file;
+    std::ifstream file;
     std::vector <double> tab;
-    file.open(path, std::ios::in);
+    file.open(path.c_str());
     if (file.good()) {
         int rows, cols;
         file >> rows >> cols;
@@ -109,7 +109,7 @@ Matrix Matrix::multiply(Matrix &m2)
     int c = cols();
     int m2r = m2.rows();
     int m2c = m2.cols();
-    Matrix result = Matrix(r, c);
+    Matrix result = Matrix(m2c, r);
     double sum = 0;
     for (int i = 0; i < r; i++) {
         for (int j = 0; j < m2c; j++) {
@@ -146,7 +146,7 @@ bool Matrix::store(std::string filename, std::string path)
     file << std::endl;
     for (int i = 0; i < r; i++) {
         for (int j = 0; j < c; j++) {
-            file << matrix[i][j];
+            file << matrix[i][j] << " ";
         }
         file << std::endl;
     }
@@ -168,57 +168,52 @@ void Matrix::print()
 
 int main()
 {
-    Matrix matrix1 = Matrix(6,4);
-    Matrix matrix2 = Matrix(4,6);
+    Matrix matrix1 = Matrix(4, 6);
+    Matrix matrix2 = Matrix(6, 4);
     Matrix squarematrix1 = Matrix(5);
     Matrix squarematrix2 = Matrix(5);
     srand(time(NULL));
     double tab;
-    for(int i = 0; i < 6; i++){
-        for(int j = 0; j < 4; j++){
-            tab = (double)(rand() % 30);
-            matrix1.set(i,j,tab);
-        }
-    }
     for(int i = 0; i < 4; i++){
         for(int j = 0; j < 6; j++){
-            tab = (double)(rand() % 30);
-            matrix2.set(i,j,tab);
+            tab = (double)(rand() % 26) / 2;
+            matrix1.set(i,j,tab);
         }
     }
     for(int i = 0; i < 5; i++){
         for(int j = 0; j < 5; j++){
-            tab = (double)(rand() % 30);
+            tab = (double)(rand() % 26) / 2;
             squarematrix1.set(i,j,tab);
-            tab = (double)(rand() % 30);
+        }
+    }
+    for(int i = 0; i < 5; i++){
+        for(int j = 0; j < 5; j++){
+            tab = (double)(rand() % 26) / 2;
             squarematrix2.set(i,j,tab);
         }
     }
 
-    std::cout << "1) Macierz 1 o wymiarach 6x4" << std::endl << std::endl;
+    std::cout << "1) Macierz 1 o wymiarach 4x6 (odczyt z pliku):" << std::endl << std::endl;
     matrix1.print();
-    matrix1.set(1, 2, 8);
-    std::cout << std::endl << "2) Macierz 2 o wymiarach 4x6" << std::endl << std::endl;
+    std::cout << std::endl << "2) Macierz 2 o wymiarach 6x4:" << std::endl << std::endl;
+    matrix2 = Matrix("./Txt/File.txt");
     matrix2.print();
-    std::cout << std::endl << "3) Macierz kw. 1 o wymiarach 5x5" << std::endl << std::endl;
+    std::cout << std::endl << "3) Macierz kw. 1 o wymiarach 5x5:" << std::endl << std::endl;
     squarematrix1.print();
-    std::cout << std::endl << "4) Macierz kw. 2 o wymiarach 5x5" << std::endl << std::endl;
+    std::cout << std::endl << "4) Macierz kw. 2 o wymiarach 5x5:" << std::endl << std::endl;
     squarematrix2.print();
-    std::cout << std::endl << "5) Dodawanie (macierz 1 i macierz 2):" << std::endl << std::endl;
+    std::cout << std::endl << "5) Dodawanie (macierz kw. 1 i macierz kw. 2):" << std::endl << std::endl;
     Matrix result1 = squarematrix1.add(squarematrix2);
     result1.print();
-    std::cout << std::endl << "6) Odejmowanie (macierz 1 i macierz 2):" << std::endl << std::endl;
+    std::cout << std::endl << "6) Odejmowanie (macierz kw. 1 i macierz kw. 2):" << std::endl << std::endl;
     Matrix result2 = squarematrix1.subtract(squarematrix2);
     result2.print();
-    std::cout << std::endl << "7) Mnozenie (macierz kw. 1 i macierz kw. 2):" << std::endl << std::endl;
+    std::cout << std::endl << "7) Mnozenie (macierz 1 i macierz 2):" << std::endl << std::endl;
     Matrix result3 = matrix1.multiply(matrix2);
     result3.print();
-    std::cout << "8) Odczyt konstruktora z pliku:" <<std::endl;
-    Matrix result4 = Matrix("./Txt/File");
-    result4.print();
-    std::cout << std::endl << "9) Zapis do pliku:" <<std::endl;
-    if(result3.store("File_store", "./Txt/")) {
-        std::cout << "Plik zapisany" << std::endl;
+    std::cout << std::endl << "8) Zapis do pliku:" << std::endl;
+    if(result3.store("File_store.txt", "./Txt/")) {
+        std::cout << "Wyniki mnozenia macierzy kwadratowych zapisane do pliku" << std::endl;
     }
 
     return 0;
