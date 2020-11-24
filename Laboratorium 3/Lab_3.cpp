@@ -65,7 +65,7 @@ Matrix::Matrix(std::string path)
     file.close();
 }
 
-Matrix::~Matrix(){};
+Matrix::~Matrix(){}
 
 void Matrix::set(int n, int m, double val)
 {
@@ -81,26 +81,40 @@ Matrix Matrix::add(Matrix &m2)
 {
     int r = rows();
     int c = cols();
-    Matrix result = Matrix(r, c);
-    for (int i = 0; i < r; i++) {
-        for (int j = 0; j < c; j++) {
-            (result.matrix)[i][j] = matrix[i][j] + (m2.matrix)[i][j];
-        }
+    int m2r = m2.rows();
+    int m2c = m2.cols();
+    if (m2r != r || m2c != c) {
+        exit (1);
     }
-    return result;
+    else {
+        Matrix result = Matrix(r, c);
+        for (int i = 0; i < r; i++) {
+            for (int j = 0; j < c; j++) {
+                (result.matrix)[i][j] = matrix[i][j] + (m2.matrix)[i][j];
+            }
+        }
+        return result;
+    }
 }
 
 Matrix Matrix::subtract(Matrix &m2)
 {
     int r = rows();
     int c = cols();
-    Matrix result = Matrix(r, c);
-    for (int i = 0; i < r; i++) {
-        for (int j = 0; j < c; j++) {
-            (result.matrix)[i][j] = matrix[i][j] - (m2.matrix)[i][j];            
-        }
+    int m2r = m2.rows();
+    int m2c = m2.cols();
+    if (m2r != r || m2c != c) {
+        exit (1);
     }
-    return result;
+    else {
+        Matrix result = Matrix(r, c);
+        for (int i = 0; i < r; i++) {
+            for (int j = 0; j < c; j++) {
+                (result.matrix)[i][j] = matrix[i][j] - (m2.matrix)[i][j];            
+            }
+        }
+        return result;
+    }
 }
 
 Matrix Matrix::multiply(Matrix &m2)
@@ -109,6 +123,9 @@ Matrix Matrix::multiply(Matrix &m2)
     int c = cols();
     int m2r = m2.rows();
     int m2c = m2.cols();
+    if (c != m2r) {
+        exit(1);
+    }
     Matrix result = Matrix(m2c, r);
     double sum = 0;
     for (int i = 0; i < r; i++) {
@@ -142,8 +159,7 @@ bool Matrix::store(std::string filename, std::string path)
     }
     int r = rows();
     int c = cols();
-    file << r << " " << c;
-    file << std::endl;
+    file << "Wiersze: " << r << ", Kolumny: " << c << std::endl;
     for (int i = 0; i < r; i++) {
         for (int j = 0; j < c; j++) {
             file << matrix[i][j] << " ";
