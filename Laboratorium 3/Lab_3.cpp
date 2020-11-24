@@ -176,7 +176,7 @@ void Matrix::print()
     int c = cols();
     for(int i = 0; i < r; i++){
         for(int j = 0; j < c; j++){
-            std::cout << std::setw(6) << matrix[i][j];
+            std::cout << std::setw(7) << matrix[i][j];
         }
         std::cout << std::endl;
     }
