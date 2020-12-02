@@ -1,4 +1,4 @@
-#include "Macierze.hpp"
+#include "..\include\Laboratorium_4\Macierze.hpp"
 
 Matrix::Matrix(int rows, int cols)
 {
