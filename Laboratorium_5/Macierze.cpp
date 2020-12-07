@@ -61,10 +61,11 @@ Matrix Matrix::add(Matrix &m2)
     int c = cols();
     int m2r = m2.rows();
     int m2c = m2.cols();
-    if (m2r != r || m2c != c) {
-        exit (1);
-    }
-    else {
+    try
+    {
+        if (m2r != r || m2c != c) {
+            throw 1;
+        }
         Matrix result = Matrix(r, c);
         for (int i = 0; i < r; i++) {
             for (int j = 0; j < c; j++) {
@@ -72,6 +73,10 @@ Matrix Matrix::add(Matrix &m2)
             }
         }
         return result;
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
     }
 }
 
@@ -81,10 +86,11 @@ Matrix Matrix::subtract(Matrix &m2)
     int c = cols();
     int m2r = m2.rows();
     int m2c = m2.cols();
-    if (m2r != r || m2c != c) {
-        exit (1);
-    }
-    else {
+    try
+    {
+        if (m2r != r || m2c != c) {
+            throw 2;
+        }
         Matrix result = Matrix(r, c);
         for (int i = 0; i < r; i++) {
             for (int j = 0; j < c; j++) {
@@ -92,6 +98,10 @@ Matrix Matrix::subtract(Matrix &m2)
             }
         }
         return result;
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
     }
 }
 
@@ -101,21 +111,28 @@ Matrix Matrix::multiply(Matrix &m2)
     int c = cols();
     int m2r = m2.rows();
     int m2c = m2.cols();
-    if (c != m2r) {
-        exit(1);
-    }
-    Matrix result = Matrix(m2c, r);
-    double sum = 0;
-    for (int i = 0; i < r; i++) {
-        for (int j = 0; j < m2c; j++) {
-            sum = 0;
-            for (int k = 0; k < c; k++) {
-                sum += matrix[i][k] * (m2.matrix)[k][j];
-            }
-            (result.matrix)[i][j] = sum;
+    try
+    {
+        if (c != m2r) {
+            throw 3;
         }
+        Matrix result = Matrix(m2c, r);
+        double sum = 0;
+        for (int i = 0; i < r; i++) {
+            for (int j = 0; j < m2c; j++) {
+                sum = 0;
+                for (int k = 0; k < c; k++) {
+                    sum += matrix[i][k] * (m2.matrix)[k][j];
+                }
+                (result.matrix)[i][j] = sum;
+            }
+        }
+        return result;
     }
-    return result;
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
 }
 
 int Matrix::cols()
