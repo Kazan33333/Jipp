@@ -78,6 +78,7 @@ Matrix Matrix::add(Matrix &m2)
     {
         std::cout << "Matrix add exception: " << exception << std::endl;
     }
+    return *this;
 }
 
 Matrix Matrix::subtract(Matrix &m2)
@@ -103,6 +104,7 @@ Matrix Matrix::subtract(Matrix &m2)
     {
         std::cout << "Matrix subtract exception: " << exception << std::endl;
     }
+    return *this;
 }
 
 Matrix Matrix::multiply(Matrix &m2)
@@ -133,6 +135,7 @@ Matrix Matrix::multiply(Matrix &m2)
     {
         std::cout << "Matrix multiply exception: " << exception << std::endl;
     }
+    return *this;
 }
 
 int Matrix::cols()
