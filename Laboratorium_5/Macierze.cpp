@@ -74,9 +74,9 @@ Matrix Matrix::add(Matrix &m2)
         }
         return result;
     }
-    catch(const std::exception& e)
+    catch(int exception)
     {
-        std::cerr << e.what() << '\n';
+        std::cout << "Matrix add exception: " << exception << std::endl;
     }
 }
 
@@ -99,9 +99,9 @@ Matrix Matrix::subtract(Matrix &m2)
         }
         return result;
     }
-    catch(const std::exception& e)
+    catch(int exception)
     {
-        std::cerr << e.what() << '\n';
+        std::cout << "Matrix subtract exception: " << exception << std::endl;
     }
 }
 
@@ -129,9 +129,9 @@ Matrix Matrix::multiply(Matrix &m2)
         }
         return result;
     }
-    catch(const std::exception& e)
+    catch(int exception)
     {
-        std::cerr << e.what() << '\n';
+        std::cout << "Matrix multiply exception: " << exception << std::endl;
     }
 }
 
