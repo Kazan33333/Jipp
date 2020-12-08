@@ -47,7 +47,7 @@ int main()
     result3.print();
     std::cout << std::endl << "8) Zapis do pliku: ";
     if(result3.store("File_store.txt", "./Txt/")) {
-        std::cout << "Wyniki mnozenia macierzy zapisane do pliku." << std::endl << std::endl;
+        std::cout << "Wyniki mnozenia macierzy zapisano do pliku." << std::endl << std::endl;
     }
 
     return 0;
