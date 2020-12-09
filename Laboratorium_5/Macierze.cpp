@@ -64,7 +64,7 @@ Matrix Matrix::add(Matrix &m2)
     try
     {
         if (m2r != r || m2c != c) {
-            throw 1;
+            throw std::runtime_error("Zle liczby");
         }
         Matrix result = Matrix(r, c);
         for (int i = 0; i < r; i++) {
@@ -74,9 +74,9 @@ Matrix Matrix::add(Matrix &m2)
         }
         return result;
     }
-    catch(int exception)
+    catch(std::exception& e)
     {
-        std::cout << "Matrix add exception: " << exception << std::endl;
+        std::cout << "Matrix add exception: " << e.what() << std::endl;
     }
     return *this;
 }
@@ -90,7 +90,7 @@ Matrix Matrix::subtract(Matrix &m2)
     try
     {
         if (m2r != r || m2c != c) {
-            throw 2;
+            throw std::runtime_error("Zle liczby");
         }
         Matrix result = Matrix(r, c);
         for (int i = 0; i < r; i++) {
@@ -100,9 +100,9 @@ Matrix Matrix::subtract(Matrix &m2)
         }
         return result;
     }
-    catch(int exception)
+    catch(std::exception& e)
     {
-        std::cout << "Matrix subtract exception: " << exception << std::endl;
+        std::cout << "Matrix subtract exception: " << e.what() << std::endl;
     }
     return *this;
 }
@@ -116,7 +116,7 @@ Matrix Matrix::multiply(Matrix &m2)
     try
     {
         if (c != m2r) {
-            throw 3;
+            throw std::runtime_error("Zle liczby");
         }
         Matrix result = Matrix(m2c, r);
         double sum = 0;
@@ -131,9 +131,9 @@ Matrix Matrix::multiply(Matrix &m2)
         }
         return result;
     }
-    catch(int exception)
+    catch(std::exception& e)
     {
-        std::cout << "Matrix multiply exception: " << exception << std::endl;
+        std::cout << "Matrix multiply exception: " << e.what() << std::endl;
     }
     return *this;
 }
