@@ -49,7 +49,7 @@ int main()
     if(result3.store("File_store.txt", "./Txt/")) {
         std::cout << "Wyniki mnozenia macierzy zapisano do pliku." << std::endl << std::endl;
     }
-    std::cout << "9) Test wyjatku" << std::endl;
+    std::cout << "9) Test wyjatku (dodawanie):" << std::endl;
     Matrix result4 = squarematrix1.add(matrix1);
 
     return 0;
