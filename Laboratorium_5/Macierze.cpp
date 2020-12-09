@@ -47,12 +47,29 @@ Matrix::~Matrix(){}
 
 void Matrix::set(int n, int m, double val)
 {
-    matrix.at(n).at(m) = val;
+    try
+    {
+        matrix.at(n).at(m) = val;
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << std::endl;
+    }
 }
 
 double Matrix::get(int n, int m)
 {
-    return matrix.at(n).at(m);
+    double val;
+    try
+    {
+        val = matrix.at(n).at(m);        
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << std::endl;
+        return 1;
+    }
+    return val;
 }
 
 Matrix Matrix::add(Matrix &m2)
@@ -64,7 +81,7 @@ Matrix Matrix::add(Matrix &m2)
     try
     {
         if (m2r != r || m2c != c) {
-            throw std::runtime_error("Zle liczby");
+            throw std::runtime_error("Liczby wierszy i kolumn nie sa rowne");
         }
         Matrix result = Matrix(r, c);
         for (int i = 0; i < r; i++) {
@@ -90,7 +107,7 @@ Matrix Matrix::subtract(Matrix &m2)
     try
     {
         if (m2r != r || m2c != c) {
-            throw std::runtime_error("Zle liczby");
+            throw std::runtime_error("Liczby wierszy i kolumn nie sa rowne");
         }
         Matrix result = Matrix(r, c);
         for (int i = 0; i < r; i++) {
@@ -116,7 +133,7 @@ Matrix Matrix::multiply(Matrix &m2)
     try
     {
         if (c != m2r) {
-            throw std::runtime_error("Zle liczby");
+            throw std::runtime_error("Liczba kolumn macierzy 1 nie jest rowna liczbie wierszy macierzy 2");
         }
         Matrix result = Matrix(m2c, r);
         double sum = 0;
