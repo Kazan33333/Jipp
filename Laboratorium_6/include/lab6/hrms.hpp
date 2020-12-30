@@ -1,16 +1,19 @@
 #include "employee.hpp"
 #include <vector>
+#include <list>
 #include <map>
 #include <algorithm>
 
-class hrms {
+class HRMS {
     private:
-        std::vector <class employee> employees;
-        std::map <class employee, double> salaries;
+        std::list <class Employee> employees;
+        std::map <std::string, class employee> departments;
+        std::map <class Employee, double> salaries;
+        std::vector <class Employee, double> sort;
     public:
-        hrms();
-        ~hrms();
-        void add(employee employ, std::string departmentID, double salary);
+        HRMS();
+        ~HRMS();
+        void add(Employee employee, std::string departmentID, double salary);
         void printDepartment(std::string departmentID);
         void changeSalary(std::string employeeID, double salary);
         void printSalaries();
