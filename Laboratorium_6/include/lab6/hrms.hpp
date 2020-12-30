@@ -6,10 +6,9 @@
 
 class HRMS {
     private:
-        std::list <class Employee> employees;
-        std::map <std::string, class employee> departments;
-        std::map <class Employee, double> salaries;
-        std::vector <class Employee, double> sort;
+        std::map <std::string, class Employee> employees;
+        std::map <std::string, std::vector<std::string>> departments;
+        std::map <std::string, double> salaries;
     public:
         HRMS();
         ~HRMS();
@@ -17,5 +16,6 @@ class HRMS {
         void printDepartment(std::string departmentID);
         void changeSalary(std::string employeeID, double salary);
         void printSalaries();
+        void cmp();
         void printSalariesSorted();
 };
