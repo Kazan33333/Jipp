@@ -8,6 +8,8 @@ Employee::Employee(std::string ID, std::string name, std::string surname, std::s
     this -> position = position;
 }
 
+Employee::Employee(){}
+
 std::string Employee::get_ID() {
     return this -> ID;
 }
