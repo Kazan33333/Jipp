@@ -1,4 +1,3 @@
-#include "../include/lab6/employee.hpp"
 #include "../include/lab6/hrms.hpp"
 
 int main()
@@ -40,5 +39,9 @@ int main()
 
     workers.printDepartment("D4");
 
+    workers.printSalaries();
+
+    workers.printSalariesSorted();
+    
     return 0;
 }
