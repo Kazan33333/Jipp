@@ -1,5 +1,7 @@
 #include "../include/lab6/hrms.hpp"
 
+HRMS::HRMS(){}
+
 void HRMS::add(Employee employee, std::string departmentID, double salary)
 {
     this -> employees[employee.get_ID()];
@@ -9,7 +11,7 @@ void HRMS::add(Employee employee, std::string departmentID, double salary)
 
 void HRMS::printDepartment(std::string departmentID)
 {
-    std::cout << "Employees from " << departmentID << " department: " << std::endl;
+    std::cout << "----- Employees from " << departmentID << " department: -----" << std::endl;
     for(auto &element : departments[departmentID]) {
         std::cout << element << std::endl;
         employees.at(element).printEmployees();
