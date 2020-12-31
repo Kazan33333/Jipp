@@ -1,3 +1,5 @@
+#ifndef HRMS_H
+#define HRMS_H
 #include "employee.hpp"
 #include <vector>
 #include <map>
@@ -10,11 +12,11 @@ class HRMS {
         std::map <std::string, double> salaries;
     public:
         HRMS();
-        ~HRMS();
         void add(Employee employee, std::string departmentID, double salary);
         void printDepartment(std::string departmentID);
         void changeSalary(std::string employeeID, double salary);
         void printSalaries();
-        void cmp();
         void printSalariesSorted();
 };
+
+#endif
