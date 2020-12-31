@@ -1,5 +1,5 @@
-#ifndef EMPLOYEE_H
-#define EMPLOYEE_H
+#ifndef EMPLOYEE_HPP
+#define EMPLOYEE_HPP
 #include <iostream>
 
 class Employee {
@@ -11,6 +11,7 @@ class Employee {
         std::string position;
     public:
         Employee(std::string ID, std::string name, std::string surname, std::string departmentID, std::string position);
+        Employee();
         std::string get_ID();
         std::string get_name();
         std::string get_surname();
