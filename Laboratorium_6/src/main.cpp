@@ -19,6 +19,26 @@ int main()
     Employee n("43", "Meredith", "Palmer", "D4", "Supplier Relations");
     Employee o("44", "Erin", "Hannon", "D4", "Receptionist");
     Employee p("45", "Ryan", "Howard", "D4", "Temp");
-  
+
+    HRMS workers;
+    workers.add(a, "D1", 5000);
+    workers.add(b, "D1", 3800);
+    workers.add(c, "D1", 3500);
+    workers.add(d, "D2", 4000);
+    workers.add(e, "D2", 4500);
+    workers.add(f, "D2", 3500);
+    workers.add(g, "D2", 3400);
+    workers.add(h, "D2", 3300);
+    workers.add(i, "D3", 4000);
+    workers.add(j, "D3", 3800);
+    workers.add(k, "D3", 3600);
+    workers.add(l, "D4", 3200);
+    workers.add(m, "D4", 3500);
+    workers.add(n, "D4", 3200);
+    workers.add(o, "D4", 2800);
+    workers.add(p, "D4", 3000);
+
+    workers.printDepartment("D4");
+
     return 0;
 }
