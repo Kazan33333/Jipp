@@ -38,10 +38,10 @@ int main()
     workers.add(p, "D4", 3000);
 
     workers.printDepartment("D4");
-
+    std::cout << "\n\n\n";
     workers.printSalaries();
-
+    std::cout << "\n\n\n";
     workers.printSalariesSorted();
-    
+
     return 0;
 }
