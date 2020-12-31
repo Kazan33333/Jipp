@@ -1,5 +1,5 @@
-#ifndef HRMS_H
-#define HRMS_H
+#ifndef HRMS_HPP
+#define HRMS_HPP
 #include "employee.hpp"
 #include <vector>
 #include <map>
