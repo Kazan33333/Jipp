@@ -1,7 +1,8 @@
+#ifndef EMPLOYEE_H
+#define EMPLOYEE_H
 #include <iostream>
 
 class Employee {
-    friend class HRMS;
     private:
         std::string ID;
         std::string name;
@@ -10,7 +11,6 @@ class Employee {
         std::string position;
     public:
         Employee(std::string ID, std::string name, std::string surname, std::string departmentID, std::string position);
-        ~Employee();
         std::string get_ID();
         std::string get_name();
         std::string get_surname();
@@ -18,3 +18,5 @@ class Employee {
         std::string get_position();
         void printEmployees();
 };
+
+#endif
