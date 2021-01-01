@@ -1,0 +1,34 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/Asus/Documents/GitHub/JiPP/Laboratorium_6/include/lab6/employee.hpp
+iostream
+-
+
+C:/Users/Asus/Documents/GitHub/JiPP/Laboratorium_6/include/lab6/hrms.hpp
+employee.hpp
+C:/Users/Asus/Documents/GitHub/JiPP/Laboratorium_6/include/lab6/employee.hpp
+vector
+-
+map
+-
+algorithm
+-
+
+C:/Users/Asus/Documents/GitHub/JiPP/Laboratorium_6/src/employee.cpp
+../include/lab6/employee.hpp
+C:/Users/Asus/Documents/GitHub/JiPP/Laboratorium_6/include/lab6/employee.hpp
+
+C:/Users/Asus/Documents/GitHub/JiPP/Laboratorium_6/src/hrms.cpp
+../include/lab6/hrms.hpp
+C:/Users/Asus/Documents/GitHub/JiPP/Laboratorium_6/include/lab6/hrms.hpp
+
+C:/Users/Asus/Documents/GitHub/JiPP/Laboratorium_6/src/main.cpp
+../include/lab6/hrms.hpp
+C:/Users/Asus/Documents/GitHub/JiPP/Laboratorium_6/include/lab6/hrms.hpp
+
