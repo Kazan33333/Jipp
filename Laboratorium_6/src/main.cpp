@@ -38,9 +38,18 @@ int main()
     workers.add(p, "D4", 3000);
 
     workers.printDepartment("D4");
-    std::cout << "\n\n\n";
+    std::cout << "\n\n\n\n";
+    workers.printDepartment("D1");
+    std::cout << "\n\n\n\n";
+
     workers.printSalaries();
-    std::cout << "\n\n\n";
+    std::cout << "\n\n\n\n";
+
+    workers.changeSalary(l.get_ID(), 3500);
+    workers.changeSalary(o.get_ID(), 3300);
+    workers.printSalaries();
+    std::cout << "\n\n\n\n";
+
     workers.printSalariesSorted();
 
     return 0;
