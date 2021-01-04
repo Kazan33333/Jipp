@@ -12,7 +12,7 @@ class HRMS {
         std::map <std::string, double> salaries;
     public:
         HRMS();
-        void add(Employee employee, std::string departmentID, double salary);
+        void add(Employee employee, std::string departmentID, double salary) noexcept(false);
         void printDepartment(std::string departmentID);
         void changeSalary(std::string employeeID, double salary);
         void printSalaries();
