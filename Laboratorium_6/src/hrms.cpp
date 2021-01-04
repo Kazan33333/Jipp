@@ -2,11 +2,17 @@
 
 HRMS::HRMS(){}
 
-void HRMS::add(Employee employee, std::string departmentID, double salary)
+void HRMS::add(Employee employee, std::string departmentID, double salary) noexcept(false)
 {
-    this->employees[employee.get_ID()] = employee;
-    this->departments[employee.get_departmentID()].push_back(employee.get_ID());
-    this->salaries[employee.get_ID()] = salary;
+    std::string employeeID = employee.get_ID();
+    if(this->employees.find(employeeID) != this->employees.end())
+    {
+        std::string error = "An employee with the given ID already exists (ID: " + employeeID + ")\n";
+        throw error;
+    }
+    this -> employees[employee.get_ID()] = employee;
+    this -> departments[employee.get_departmentID()].push_back(employee.get_ID());
+    this -> salaries[employee.get_ID()] = salary;
 }
 
 void HRMS::printDepartment(std::string departmentID)
@@ -20,13 +26,13 @@ void HRMS::printDepartment(std::string departmentID)
 
 void HRMS::changeSalary(std::string employeeID, double salary)
 {
-    this->salaries[employeeID] = salary;
+    this -> salaries[employeeID] = salary;
 }
 
 void HRMS::printSalaries()
 {
     std::cout << "|--------------- List of employees: ---------------|" << std::endl;
-    for (auto& element : this->salaries) {
+    for (auto& element : this -> salaries) {
         std::cout << "ID: " << element.first << std::endl;
         std::cout << "Name: " << employees.at(element.first).get_name() << std::endl;
         std::cout << "Surname: " << employees.at(element.first).get_surname() << std::endl;
@@ -41,12 +47,12 @@ void HRMS::printSalariesSorted()
 {
     std::vector < std::pair <Employee, double>> sorted;
     for (auto& element : employees) {
-        sorted.push_back(std::make_pair(element.second, this->salaries[element.second.get_ID()]));
+        sorted.push_back(std::make_pair(element.second, this -> salaries[element.second.get_ID()]));
     }
 
     std::sort(sorted.begin(), sorted.end(), [](std::pair <Employee, double>& a, std::pair <Employee, double>& b) {
         return (a.second > b.second);
-        });
+    });
 
     std::cout << "|------- List of employees sorted by salary: -------|" << std::endl;
     for (auto& element : sorted) {
