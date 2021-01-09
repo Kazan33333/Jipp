@@ -5,27 +5,31 @@ HRMS::HRMS(){}
 void HRMS::add(Employee employee, std::string departmentID, double salary) noexcept(false)
 {
     std::string employeeID = employee.get_ID();
-    if(this->employees.find(employeeID) != this->employees.end())
-    {
-        std::string error = "An employee with the given ID already exists (ID: " + employeeID + ")\n";
-        throw error;
+    if(this->employees.find(employeeID) != this->employees.end()) {
+        throw std::invalid_argument("An employee with given ID already exists (ID: " + employeeID + ")\n");
     }
     this -> employees[employee.get_ID()] = employee;
     this -> departments[employee.get_departmentID()].push_back(employee.get_ID());
     this -> salaries[employee.get_ID()] = salary;
 }
 
-void HRMS::printDepartment(std::string departmentID)
+void HRMS::printDepartment(std::string departmentID) noexcept(false)
 {
     std::cout << "|---------- Employees from " << departmentID << " department: ----------|" << std::endl;
+    if(this->departments.find(departmentID) == this->departments.end()) {
+        throw std::invalid_argument("There is no department with given ID (ID: " + departmentID + ")\n");
+    }
     for (auto& element : departments[departmentID]) {
         employees.at(element).printEmployees();
         std::cout << "----------------------------------------------------" << std::endl;
     }
 }
 
-void HRMS::changeSalary(std::string employeeID, double salary)
+void HRMS::changeSalary(std::string employeeID, double salary) noexcept(false)
 {
+    if(this->salaries.find(employeeID) == this->salaries.end()) {
+        throw std::invalid_argument("There is no employee with given ID (ID: " + employeeID + ")\n");
+    }
     this -> salaries[employeeID] = salary;
 }
 
