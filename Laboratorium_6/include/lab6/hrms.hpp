@@ -4,6 +4,7 @@
 #include <vector>
 #include <map>
 #include <algorithm>
+#include <stdexcept>
 
 class HRMS {
     private:
@@ -13,8 +14,8 @@ class HRMS {
     public:
         HRMS();
         void add(Employee employee, std::string departmentID, double salary) noexcept(false);
-        void printDepartment(std::string departmentID);
-        void changeSalary(std::string employeeID, double salary);
+        void printDepartment(std::string departmentID) noexcept(false);
+        void changeSalary(std::string employeeID, double salary) noexcept(false);
         void printSalaries();
         void printSalariesSorted();
 };
