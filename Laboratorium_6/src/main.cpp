@@ -39,6 +39,7 @@ int main()
 
     workers.printDepartment("D4");
     std::cout << "\n\n\n\n";
+    
     workers.printDepartment("D1");
     std::cout << "\n\n\n\n";
 
@@ -47,6 +48,8 @@ int main()
 
     workers.changeSalary(l.get_ID(), 3500);
     workers.changeSalary(o.get_ID(), 3300);
+    workers.changeSalary(f.get_ID(), 4300);
+
     workers.printSalaries();
     std::cout << "\n\n\n\n";
 
