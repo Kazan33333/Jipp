@@ -1,3 +1,0 @@
-C:/Users/Asus/Documents/GitHub/JiPP/Laboratorium_6/build/CMakeFiles/binary.dir
-C:/Users/Asus/Documents/GitHub/JiPP/Laboratorium_6/build/CMakeFiles/edit_cache.dir
-C:/Users/Asus/Documents/GitHub/JiPP/Laboratorium_6/build/CMakeFiles/rebuild_cache.dir
