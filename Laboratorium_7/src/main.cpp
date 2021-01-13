@@ -49,7 +49,7 @@ int main()
     if(result3.store("File_store.txt", "./txt/")) {
         std::cout << "Wyniki mnozenia macierzy zapisane do pliku." << std::endl << std::endl;
     }
-
+    /* W lab3 nie uzylem metody get, uzylem ja przy operatorach */
     std::cout << "9) Przeciazanie operatorow" << std::endl; 
     std::cout << std::endl << "-> Dodawanie (macierz kw. 1 i macierz kw. 2):" << std::endl << std::endl;
     Matrix result4 = squarematrix1 + squarematrix2;
