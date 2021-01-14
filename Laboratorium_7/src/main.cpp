@@ -36,30 +36,39 @@ int main()
     squarematrix1.print();
     std::cout << std::endl << "4) Macierz kw. 2 o wymiarach 5x5:" << std::endl << std::endl;
     squarematrix2.print();
-    std::cout << std::endl << "5) Dodawanie (macierz kw. 1 i macierz kw. 2):" << std::endl << std::endl;
-    Matrix result1 = squarematrix1.add(squarematrix2);
-    result1.print();
-    std::cout << std::endl << "6) Odejmowanie (macierz kw. 1 i macierz kw. 2):" << std::endl << std::endl;
-    Matrix result2 = squarematrix1.subtract(squarematrix2);
-    result2.print();
-    std::cout << std::endl << "7) Mnozenie (macierz 1 i macierz 2):" << std::endl << std::endl;
-    Matrix result3 = matrix1.multiply(matrix2);
-    result3.print();
+    std::cout << std::endl << "5) Result1 -> Dodawanie (macierz kw. 1 i macierz kw. 2):" << std::endl << std::endl;
+    Matrix Result1 = squarematrix1.add(squarematrix2);
+    Result1.print();
+    std::cout << std::endl << "6) Result2 -> Odejmowanie (macierz kw. 1 i macierz kw. 2):" << std::endl << std::endl;
+    Matrix Result2 = squarematrix1.subtract(squarematrix2);
+    Result2.print();
+    std::cout << std::endl << "7) Result3 -> Mnozenie (macierz 1 i macierz 2):" << std::endl << std::endl;
+    Matrix Result3 = matrix1.multiply(matrix2);
+    Result3.print();
     std::cout << std::endl << "8) Zapis do pliku: ";
-    if(result3.store("File_store.txt", "./txt/")) {
+    if(Result3.store("File_store.txt", "./txt/")) {
         std::cout << "Wyniki mnozenia macierzy zapisane do pliku." << std::endl << std::endl;
     }
+
     /* W lab3 nie uzylem metody get, uzylem ja przy operatorach */
     std::cout << "9) Przeciazanie operatorow" << std::endl; 
-    std::cout << std::endl << "-> Dodawanie (macierz kw. 1 i macierz kw. 2):" << std::endl << std::endl;
-    Matrix result4 = squarematrix1 + squarematrix2;
-    result4.print();
-    std::cout << std::endl << "-> Odejmowanie (macierz kw. 1 i macierz kw. 2):" << std::endl << std::endl;
-    Matrix result5 = squarematrix1 - squarematrix2;
-    result5.print();
-    std::cout << std::endl << "-> Mnozenie (macierz 1 i macierz 2):" << std::endl << std::endl;
-    Matrix result6 = matrix1 * matrix2;
-    result6.print();
+    std::cout << std::endl << "--> Dodawanie (macierz kw. 1 i macierz kw. 2):" << std::endl << std::endl;
+    Matrix Result4 = squarematrix1 + squarematrix2;
+    Result4.print();
+    std::cout << std::endl << "--> Odejmowanie (macierz kw. 1 i macierz kw. 2):" << std::endl << std::endl;
+    Matrix Result5 = squarematrix1 - squarematrix2;
+    Result5.print();
+    std::cout << std::endl << "--> Mnozenie (macierz 1 i macierz 2):" << std::endl << std::endl;
+    Matrix Result6 = matrix1 * matrix2;
+    Result6.print();
+    std::cout << std::endl << "--> Czy macierze sa rowne? (1 - tak, 0 - nie) -> " << (Result4 == Result1) << std::endl;
+    std::cout << std::endl << "--> Czy macierze nie sa rowne? (1 - tak, 0 - nie) -> " << (Result4 != Result1) << std::endl;
+    std::cout << std::endl << "--> Inkrementacja elementow macierzy Result6:" << std::endl << std::endl;
+    ++Result6;
+    Result6.print();
+    std::cout << std::endl << "--> Dekrementacja elementow macierzy Result6:" << std::endl << std::endl;
+    --Result6;
+    Result6.print();
     std::cout << std::endl;
 
     return 0;
