@@ -279,3 +279,77 @@ Matrix Matrix::operator*(Matrix &m2)
     }
     return *this;
 }
+
+bool Matrix::operator==(Matrix &m2)
+{
+    int r = rows();
+    int c = cols();
+    int m2r = m2.rows();
+    int m2c = m2.cols();
+    try
+    {
+        if (r != m2r || c != m2c) {
+            throw std::runtime_error("Macierze maja rozne rozmiary");
+        }
+        for (int i = 0; i < r; i++) {
+            for (int j = 0; j < c; j++) {
+                if (get(j, j) == m2.get(i, j)) {
+                    return true;
+                }
+            }
+        }
+    }
+    catch (std::exception& e)
+    {
+        std::cout << "Matrix comparison exception: " << e.what() << std::endl;
+    }
+    return false;
+}
+
+bool Matrix::operator!=(Matrix &m2)
+{
+    int r = rows();
+    int c = cols();
+    int m2r = m2.rows();
+    int m2c = m2.cols();
+    try
+    {
+        if (r != m2r || c != m2c) {
+            throw std::runtime_error("Macierze maja rozne rozmiary");
+        }
+        for (int i = 0; i < r; i++) {
+            for (int j = 0; j < c; j++) {
+                if (get(j, j) != m2.get(i, j)) {
+                    return true;
+                }
+            }
+        }
+    }
+    catch (std::exception& e)
+    {
+        std::cout << "Matrix comparison exception: " << e.what() << std::endl;
+    }
+    return false;
+}
+
+void Matrix::operator++()
+{
+    int r = rows();
+    int c = cols();
+    for (int i = 0; i < r; i++) {
+        for (int j = 0; j < c; j++) {
+            set(i, j, (get(i, j) + 1));
+        }
+    }
+}
+
+void Matrix::operator--()
+{
+    int r = rows();
+    int c = cols();
+    for (int i = 0; i < r; i++) {
+        for (int j = 0; j < c; j++) {
+            set(i, j, (get(i, j) - 1));
+        }
+    }
+}
