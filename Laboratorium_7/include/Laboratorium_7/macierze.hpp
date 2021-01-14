@@ -20,8 +20,12 @@ public:
     int rows();
     void print();
     bool store(std::string filename, std::string path);
-    
+    // Operatory
     Matrix operator+(Matrix &m2);
     Matrix operator-(Matrix &m2);
     Matrix operator*(Matrix &m2);
+    bool operator==(Matrix &m2);
+    bool operator!=(Matrix &m2);
+    void operator++();
+    void operator--();
 };
