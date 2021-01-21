@@ -61,8 +61,8 @@ int main()
     std::cout << std::endl << "--> Mnozenie (macierz 1 i macierz 2):" << std::endl << std::endl;
     Matrix Result6 = matrix1 * matrix2;
     Result6.print();
-    std::cout << std::endl << "--> Czy macierze sa rowne? (1 - tak, 0 - nie) -> " << (Result4 == Result1) << std::endl;
-    std::cout << std::endl << "--> Czy macierze nie sa rowne? (1 - tak, 0 - nie) -> " << (Result4 != Result1) << std::endl;
+    std::cout << std::endl << "--> Czy macierze sa rowne? (1 - tak, 0 - nie) -> " << (Result4 == Result5) << std::endl;
+    std::cout << std::endl << "--> Czy macierze nie sa rowne? (1 - tak, 0 - nie) -> " << (Result4 != Result5) << std::endl;
     std::cout << std::endl << "--> Inkrementacja elementow macierzy Result6:" << std::endl << std::endl;
     ++Result6;
     Result6.print();
